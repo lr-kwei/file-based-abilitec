@@ -1,0 +1,45 @@
+{ 
+    "fileFormat": 
+        {        
+        "ak": "0",
+        "header": "y",
+        "dl": ","
+        },
+    
+    "touchPointColumns": 
+        { 
+        "firstName": "N/A", 
+        "middleName": "N/A", 
+        "lastName": "N/A", 
+        "generationalSuffix": "N/A", 
+        "name": "N/A", 
+        "primaryNumber": "N/A", 
+        "preDirectional": "N/A", 
+        "street": "N/A", 
+        "streetSuffix": "N/A", 
+        "postDirectional": "N/A", 
+        "unitDesignator": "N/A", 
+        "secondaryNumber": "N/A", 
+        "streetAddress": "N/A", 
+        "city": "N/A", 
+        "state": "N/A",
+        "zipCode": "N/A", 
+        "email": "1", 
+        "emailMD5": "N/A",
+        "phone": "N/A"
+        }, 
+
+    "options":
+        {
+        "limit": "1",
+        "matchLevel": "default"
+        },   
+
+    "personID": "docID",
+
+    "passThroughColumns":
+        { 
+        "column1": "N/A",
+        "column2": "N/A"
+        }
+}
