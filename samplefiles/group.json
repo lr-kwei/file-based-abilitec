@@ -1,0 +1,33 @@
+{
+  "group": {
+    "persons": [
+      {
+      	"person": {
+      		"id": "ca5a5a5a00d1259d57e2097710dba53c20a26e7ab6",
+      		"householdId": "1a5a5a5a00f3c1e266b1ed36185b4da43f0c988ee1",
+      		"abilitec": {
+      			"consumerLink": "003YUS02XKRLMYCQ"
+      		}
+      	}
+      },
+      {
+      	"person": {
+      		"id": "5a5a5a5a00d1259d57e2097710dba53c20a26e7b32",
+      		"householdId": "5a5a5a5a00f3c1e266b1ed36185b4da43f0c98862e",
+      		"abilitec": {
+      			"consumerLink": "003YUS01AFBEKFHD"
+      		}
+      	}
+      },
+      {
+      	"person": {
+      		"id": "f35a5a5a00d1259d57e2097710dba53c20a26e7ddb",
+      		"householdId": "125a5a5a00f3c1e266b1ed36185b4da43f0c9886f4",
+      		"abilitec": {
+      			"consumerLink": "003YUS02UAJDEOFC"
+      		}
+      	}
+      }
+    ]
+  }
+}
