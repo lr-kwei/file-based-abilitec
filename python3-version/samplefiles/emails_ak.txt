@@ -1,0 +1,5 @@
+ak,email
+1A,jpsloan1@yahoo.com
+2A,jpsloan1@gmail.com
+1B,jpsloan1@mba2009.hbs.edu
+2B,jsloan@liveramp.com
