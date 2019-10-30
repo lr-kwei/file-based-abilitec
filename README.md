@@ -1,9 +1,12 @@
 # abilitecapi
 
 # ACTIVATE YOUR VIRTUAL ENVIRONMENT BEFORE RUNNING ANYTHING
-source /home/kevin_wei_liveramp_com/file-based-abilitec/py3venv/bin/activate
+# source /home/kevin_wei_liveramp_com/file-based-abilitec/py3venv/bin/activate
+
+Directions on how to make your own virtual env
 mkdir py3venv
 pip3 install virtualenv
+python3 -m venv /path/to/virtualenvironment/directory
 
 
 #Passing in a file config via file
