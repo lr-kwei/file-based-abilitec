@@ -1,5 +1,16 @@
 # abilitecapi
 
+# ACTIVATE YOUR VIRTUAL ENVIRONMENT BEFORE RUNNING ANYTHING
+# source /home/kevin_wei_liveramp_com/file-based-abilitec/py3venv/bin/activate
+
+Directions on how to make your own virtual env
+
+mkdir py3venv
+
+pip3 install virtualenv
+
+python3 -m venv /path/to/virtualenvironment/directory
+
 
 #Passing in a file config via file
 
@@ -60,9 +71,12 @@ For example:
         }
 }
 
-`python2.7 -c 'from callAbiliTecwithFile import *; appendFile("/../../file_to_run.txt","|",input_param_file="/../../file_config.json",validate=False)'`
+`python -c 'from callAbiliTecwithFile import *; appendFile("/../../file_to_run.txt","|",input_param_file="/../../file_config.json",validate=False)'`
 
 # CHANGELOG
+
+#release 2.3
+* Updated script to use python3
 
 #release 2.2—————————
 * Modified a few threading/exception handling in hopes of improving reliability
