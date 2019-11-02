@@ -1,0 +1,1 @@
+ak,emailMD5,docID,hhDoc,matchLevel,dense,atResidentialAddress,atUndeliverableAddress,isDeceased,isInferredDeceased,isInactive

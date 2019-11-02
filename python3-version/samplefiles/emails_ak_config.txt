@@ -1,1 +1,1 @@
-{"endpointOptions": {"limit": 1, "matchLevel": "default"}, "outputOptions": {"insights": "y", "households": "y"}, "touchPointColumns": {"email": 1}, "passThroughColumns": {}, "fileFormat": {"ak": 0, "dl": ",", "header": "y"}, "personID": "docID"}
+{"endpointOptions": {"limit": 1, "matchLevel": "default"}, "outputOptions": {"insights": "y", "households": "y"}, "touchPointColumns": {"emailMD5": 1}, "passThroughColumns": {}, "fileFormat": {"ak": 0, "dl": ",", "header": "y"}, "personID": "docID"}

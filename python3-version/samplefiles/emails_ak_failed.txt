@@ -1,0 +1,5 @@
+ak,emailMD5,status
+1A,jpsloan1@yahoo.com,600-0043
+2A,jpsloan1@gmail.com,600-0043
+1B,jpsloan1@mba2009.hbs.edu,600-0043
+2B,jsloan@liveramp.com,600-0043

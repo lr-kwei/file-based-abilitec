@@ -27,7 +27,7 @@ from queue import Queue
 # global variables
 endpoint = "/people/match?"  # define endpoint for API
 batchEndpoint = "/batch/match"  # define endpoint for batch calls
-accessToken = {"client_id": "kevin-wei-appdev", "client_secret": None, "access_token": None, "exp_time": None}  # Access token placeholder
+accessToken = {"client_id": "colin-onboarding-test-client", "client_secret": "1243c4ad-5532-4492-ad38-a9a4e61a7362", "access_token": None, "exp_time": 0}  # Access token placeholder
 maxBatchSize = 1000
 configDict = {"endpointOptions": {"limit": 1, "matchLevel": "default"}, "outputOptions": {"insights": "y", "households": "y"}, "touchPointColumns": collections.OrderedDict(), "passThroughColumns": collections.OrderedDict(), "fileFormat": {"ak": None}}  # set configs for the filemaxBatchSize = 1000
 
@@ -68,7 +68,7 @@ def appendFile(fname, dl=None, validate=True, person_id='docID', input_param_fil
     checkToken()  # check for valid access token
     new_fname = createNewFile(fname, str(configDict["fileFormat"]["dl"]), str(configDict["personID"]))  # create file to hold responses
     failed_fname = createFailedFile(fname, str(configDict["fileFormat"]["dl"]))  # create file to hold failed batches and calls
-    rows_processed = partitionAndCall(of, new_fname, failed_fname, 400000, 100, str(configDict["fileFormat"]["dl"]))  # call the method to create partitions of the file, call the API from threads, and write results to file
+    rows_processed = partitionAndCall(of, new_fname, failed_fname, 250000, 100, str(configDict["fileFormat"]["dl"]))  # call the method to create partitions of the file, call the API from threads, and write results to file
     print(('processing complete with ' + str(rows_processed[0]) + ' rows processed.'))
     print(('File ' + str(new_fname) + ' created with ' + str(rows_processed[2]) + ' successful rows.'))
     print(('File ' + str(failed_fname) + ' created with ' + str(rows_processed[1]) + ' failed rows.'))
@@ -395,7 +395,7 @@ def callBatch(q, resultList, failedList, dl):
             try:
                 time.sleep(5) # sleep for 5 seconds to separate out batches
                 response = callDSAPI.post(batchEndpoint, token, pay)  # call the API
-            except requests.exceptions.ConnectionError as e:  # handle connection errors
+            except Exception as e:  # handle any error
                 retry += 1
                 if retry == 10:
                     print("Too many connection errors; skipping batch. See _failed file for details")
@@ -406,40 +406,6 @@ def callBatch(q, resultList, failedList, dl):
                     # print("Connection Error " + str(e) + "...retry " + str(retry))
                     time.sleep(10)  # sleep for 10 seconds
                     continue
-            except requests.exceptions.ReadTimeout as e:
-                retry += 1
-                if retry == 10:
-                    print("Too many connection errors; skipping batch. See _failed file for details")
-                    for i in range(len(payloadList)):
-                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
-                    break
-                else:
-                    # print("Connection Error " + str(e) + "...retry " + str(retry))
-                    time.sleep(10)  # sleep for 10 seconds
-                    continue
-            except requests.exceptions.HTTPError as e:
-                retry += 1
-                if retry == 10:
-                    print("Too many connection errors; skipping batch. See _failed file for details")
-                    for i in range(len(payloadList)):
-                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
-                    break
-                else:
-                    # print("Connection Error " + str(e) + "...retry " + str(retry))
-                    time.sleep(10)  # sleep for 10 seconds
-                    continue
-            except requests.exceptions.ChunkedEncodingError as e:
-                retry += 1
-                if retry == 10:
-                    print("Too many connection errors; skipping batch. See _failed file for details")
-                    for i in range(len(payloadList)):
-                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
-                    break
-                else:
-                    # print("Connection Error " + str(e) + "...retry " + str(retry))
-                    time.sleep(10)  # sleep for 10 seconds
-                    continue
-
             if response.status_code == 200:  # parse the response
                 response_body = json.loads(response.text)
                 for i in range(len(response_body)):  # the response is a batch document
