@@ -395,7 +395,7 @@ def callBatch(q, resultList, failedList, dl):
             try:
                 time.sleep(5) # sleep for 5 seconds to separate out batches
                 response = callDSAPI.post(batchEndpoint, token, pay)  # call the API
-            except Exception as e:  # handle any error
+            except requests.exceptions.ConnectionError as e:  # handle connection errors
                 retry += 1
                 if retry == 10:
                     print("Too many connection errors; skipping batch. See _failed file for details")
@@ -406,6 +406,40 @@ def callBatch(q, resultList, failedList, dl):
                     # print("Connection Error " + str(e) + "...retry " + str(retry))
                     time.sleep(10)  # sleep for 10 seconds
                     continue
+            except requests.exceptions.ReadTimeout as e:
+                retry += 1
+                if retry == 10:
+                    print("Too many connection errors; skipping batch. See _failed file for details")
+                    for i in range(len(payloadList)):
+                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
+                    break
+                else:
+                    # print("Connection Error " + str(e) + "...retry " + str(retry))
+                    time.sleep(10)  # sleep for 10 seconds
+                    continue
+            except requests.exceptions.HTTPError as e:
+                retry += 1
+                if retry == 10:
+                    print("Too many connection errors; skipping batch. See _failed file for details")
+                    for i in range(len(payloadList)):
+                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
+                    break
+                else:
+                    # print("Connection Error " + str(e) + "...retry " + str(retry))
+                    time.sleep(10)  # sleep for 10 seconds
+                    continue
+            except requests.exceptions.ChunkedEncodingError as e:
+                retry += 1
+                if retry == 10:
+                    print("Too many connection errors; skipping batch. See _failed file for details")
+                    for i in range(len(payloadList)):
+                        failedList.append(payloadList[i] + dl + 'ConnectionError' + '\n')
+                    break
+                else:
+                    # print("Connection Error " + str(e) + "...retry " + str(retry))
+                    time.sleep(10)  # sleep for 10 seconds
+                    continue
+
             if response.status_code == 200:  # parse the response
                 response_body = json.loads(response.text)
                 for i in range(len(response_body)):  # the response is a batch document
