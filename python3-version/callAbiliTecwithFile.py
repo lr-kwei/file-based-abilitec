@@ -27,7 +27,7 @@ from queue import Queue
 # global variables
 endpoint = "/people/match?"  # define endpoint for API
 batchEndpoint = "/batch/match"  # define endpoint for batch calls
-accessToken = {"client_id": "colin-onboarding-test-client", "client_secret": "1243c4ad-5532-4492-ad38-a9a4e61a7362", "access_token": None, "exp_time": 0}  # Access token placeholder
+accessToken = {"client_id": "get your own creds", "client_secret": "sharing creds is bad", "access_token": None, "exp_time": 0}  # Access token placeholder
 maxBatchSize = 1000
 configDict = {"endpointOptions": {"limit": 1, "matchLevel": "default"}, "outputOptions": {"insights": "y", "households": "y"}, "touchPointColumns": collections.OrderedDict(), "passThroughColumns": collections.OrderedDict(), "fileFormat": {"ak": None}}  # set configs for the filemaxBatchSize = 1000
 
